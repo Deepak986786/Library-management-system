@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 10px;
+
+    .nav-items{
+        // background-color: green;
+        display: flex;
+        // padding: 10px;
+        margin-right: 200px;
+        ul{
+            display: flex;
+            flex-direction: row;
+
+            li{
+                list-style: none;
+                margin-left: 100px;
+                // background-color: pink;
+                padding: 10px;
+            }
+            .active{
+                border-bottom: 2px solid pink;
+            }
+        }
+    }
+}
