@@ -5,6 +5,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksBorrowedComponent } from './components/books-borrowed/books-borrowed.component';
 import { UserRoutingModule } from './user.routing';
 import { CoreModule } from '../core/core.module';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,12 +14,14 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     UserComponent,
     DashboardComponent,
-    BooksBorrowedComponent
+    BooksBorrowedComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class UserModule { }

@@ -9,19 +9,20 @@ import { RegisterComponent } from './core/components/register/register.component
 
 const routes: Routes = [
   {
-    path:'' , component:HomeComponent , canActivate:[AuthGuard] , data:['user']
+    path: '', component: HomeComponent, canActivate: [AuthGuard]
   },
   {
-    path:'login', component:LoginComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path:'register' , component : RegisterComponent
+    path: 'register', component: RegisterComponent
   },
   {
-    path:'user' , loadChildren:()=>import('./user/user.module').then(m=>m.UserModule) , component:UserComponent
+    path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule), component: UserComponent
   },
   {
-    path:'admin' , loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule) , component:AdminComponent
+    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), component: AdminComponent, canActivate: [AuthGuard]
+    , data: { expectedRole: 'admin' }
   }
 ];
 

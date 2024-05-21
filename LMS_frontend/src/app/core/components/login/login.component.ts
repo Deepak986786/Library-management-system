@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,16 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-username: string='';
-password: string='';
-role: string="user";
+  email: string = '';
+  password: string = '';
 
-  constructor() { }
+  constructor(
+    private auth: AuthService, private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
-  login(){
-     console.log(this.username , this.password , this.role)
+  login() {
+    let credential = {
+      email: this.email,
+      password: this.password
+    }
+    this.auth.login(credential).subscribe(data => {
+      console.log('login-data', data);
+      this.auth.setUser(data.user)
+      if (data.user.role === "admin") {
+        this.router.navigate(['/admin/dashboard']);
+      } else {
+        this.router.navigate(['/user/dashboard']);
+      }
+    })
+
   }
 
 }

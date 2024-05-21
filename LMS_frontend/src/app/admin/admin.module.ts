@@ -6,6 +6,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ManageBooksComponent } from './components/manage-books/manage-books.component';
 import { AdminRoutingModule } from './admin.routing';
 import { CoreModule } from '../core/core.module';
+import { BookAddEditDialogComponent } from './components/book-add-edit-dialog/book-add-edit-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 
 
 
@@ -14,12 +17,15 @@ import { CoreModule } from '../core/core.module';
     AdminComponent,
     UsersListComponent,
     DashboardComponent,
-    ManageBooksComponent
+    ManageBooksComponent,
+    BookAddEditDialogComponent,
+    AdminProfileComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

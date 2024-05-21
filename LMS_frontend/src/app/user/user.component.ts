@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.auth.getUser()?.email === "" || this.auth.getUser() == undefined) {
+      this.router.navigate(['/user/login'])
+    }
   }
+
+  navItems = [
+    { title: 'Home', url: '/user/dashboard' },
+    { title: 'My Books', url: '/user/books-borrowed' },
+    { title: 'Profile', url: '/user/profile' }
+  ]
 
 }

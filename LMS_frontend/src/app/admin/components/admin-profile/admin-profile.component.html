@@ -1,0 +1,28 @@
+<div class="profile-container" *ngIf="user">
+    <div class="profile-header">
+      <img [src]="user.profilePicture || 'default-profile.png'" alt="{{ user.name }}" class="profile-picture">
+      <h2>{{ user.name }}</h2>
+      <p class="role">{{ user.role }}</p>
+      <button (click)="toggleEditMode()">{{ editMode ? 'Cancel' : 'Edit Profile' }}</button>
+    </div>
+  
+    <div class="profile-details" *ngIf="!editMode">
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+  
+    <div class="edit-profile" *ngIf="editMode">
+      <form (submit)="saveProfile()">
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="user.name" name="name" required>
+  
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
+  
+        <label for="profilePicture">Profile Picture URL</label>
+        <input type="text" id="profilePicture" [(ngModel)]="user.profilePicture" name="profilePicture">
+  
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  

@@ -4,10 +4,13 @@
     </div>
     <div class="nav-items">
         <ul>
-            <li *ngFor="let items of navItems"  [routerLink]="items.url" routerLinkActive="active"> 
-               <!-- <button>  {{ items.title}}  </button> -->
-               {{ items.title}}
+            <li *ngFor="let items of navItems" [routerLink]="items.url" routerLinkActive="active">
+                <!-- <button>  {{ items.title}}  </button> -->
+                {{ items.title}}
             </li>
         </ul>
+    </div>
+    <div class="profile">
+        <span> {{ user?.name }} </span>
     </div>
 </div>

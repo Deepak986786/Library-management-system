@@ -8,26 +8,26 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BookComponent } from './components/book/book.component';
-import { BookAddEditDialogComponent } from './components/book-add-edit-dialog/book-add-edit-dialog.component';
 
 @NgModule({
-    declarations:[
+    declarations: [
         HomeComponent,
         LoginComponent,
         RegisterComponent,
         NavbarComponent,
         BooksListComponent,
         BookComponent,
-        BookAddEditDialogComponent
     ],
-    imports:[
+    imports: [
         FormsModule,
         RouterModule,
         CommonModule
     ],
-    exports:[
-        NavbarComponent
+    exports: [
+        NavbarComponent,
+        BooksListComponent,
+        BookComponent
     ]
-    
+
 })
-export class CoreModule {}
+export class CoreModule { }

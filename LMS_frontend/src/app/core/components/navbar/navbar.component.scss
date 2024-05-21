@@ -1,31 +1,76 @@
-.navbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f9f9f9;
-    padding: 10px;
+// .navbar{
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;
+//     background-color: #f9f9f9;
+//     padding: 10px;
 
-    .nav-items{
-        // background-color: green;
-        display: flex;
-        // padding: 10px;
-        margin-right: 200px;
-        ul{
-            display: flex;
-            flex-direction: row;
+//     .nav-items{
+//         // background-color: green;
+//         display: flex;
+//         // padding: 10px;
+//         margin-right: 200px;
+//         ul{
+//             display: flex;
+//             flex-direction: row;
 
-            li{
-                list-style: none;
-                margin-left: 100px;
-                // background-color: pink;
-                padding: 10px;
-                // transition:  1s ease-in;
-            }
-            .active{
-                border-bottom: 2px solid pink;
-                // transition: 1s ease;
-            }
-        }
+//             li{
+//                 list-style: none;
+//                 margin-left: 100px;
+//                 // background-color: pink;
+//                 padding: 10px;
+//                 // transition:  1s ease-in;
+//             }
+//             .active{
+//                 border-bottom: 2px solid pink;
+//                 // transition: 1s ease;
+//             }
+//         }
+//     }
+// }
+
+// navbar.component.scss
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    h3 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
     }
+  }
+
+  .nav-items {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      li {
+        margin-left: 20px;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: border-bottom 0.3s ease;
+
+        &:hover {
+          border-bottom: 2px solid white;
+        }
+
+        &.active {
+          border-bottom: 2px solid white;
+        }
+      }
+    }
+  }
 }
