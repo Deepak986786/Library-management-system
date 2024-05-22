@@ -75,4 +75,34 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, updateUser, deleteUser };
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().populate("borrowedBooks returnedBooks");
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getBorrowedBooksById = async (req, res) => {
+  const userId = req.params.userId;
+  console.log("userid in geborrowbook", userId);
+  try {
+    const user = await User.findById(userId).populate("borrowedBooks");
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.status(200).send(user.borrowedBooks);
+  } catch (error) {
+    res.status(500).send({ message: "Error fetching borrowed books", error });
+  }
+};
+
+export {
+  registerUser,
+  loginUser,
+  updateUser,
+  deleteUser,
+  getAllUsers,
+  getBorrowedBooksById,
+};

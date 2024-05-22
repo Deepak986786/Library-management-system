@@ -1,75 +1,102 @@
-// book-card.component.scss
-
 .book-wrapper {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 300px;
-  margin: 20px;
-  text-align: center;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .edit {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-
-  .thumbnail {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background-color: #f4f4f4;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 300px;
+  
+    .edit {
+      align-self: flex-end;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      background-color: #ff9800;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
       &:hover {
-        transform: scale(1.1);
+        background-color: #e68900;
+      }
+    }
+  
+    .thumbnail {
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+    }
+  
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+  
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+  
+      .price {
+        font-size: 18px;
+        color: #4CAF50;
+        margin-bottom: 10px;
+      }
+  
+      .description {
+        font-size: 16px;
+        color: #757575;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+  
+      .stock {
+        font-size: 14px;
+        color: #888;
+      }
+    }
+  
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+  
+      button {
+        flex: 1;
+        padding: 10px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      .delete {
+        background-color: #f44336;
+        color: #fff;
+  
+        &:hover {
+          background-color: #d32f2f;
+        }
+      }
+  
+      .borrow {
+        background-color: #4CAF50;
+        color: #fff;
+  
+        &:hover {
+          background-color: #388E3C;
+        }
       }
     }
   }
-
-  .details {
-    padding: 15px;
-
-    .title {
-      display: block;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      display: block;
-      font-size: 16px;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-
-    .description {
-      display: block;
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-  }
-}
+  

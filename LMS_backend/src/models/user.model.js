@@ -18,6 +18,8 @@ const userSchema = new Schema({
     enum: ["user", "admin"],
     default: "user",
   },
+  borrowedBooks: [{ type: Schema.Types.ObjectId, ref: "Book" }],
+  returnedBooks: [{ type: Schema.Types.ObjectId, ref: "Book" }],
 });
 
 export const User = mongoose.model("User", userSchema);

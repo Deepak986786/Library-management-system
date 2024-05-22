@@ -16,6 +16,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let user = this.auth.getUser();
+    if (user && user?.email) {
+      if (user.role === "admin") {
+        this.router.navigate(['/admin/dashboard']);
+      } else {
+        this.router.navigate(['/user/dashboard']);
+      }
+    }
   }
   login() {
     let credential = {

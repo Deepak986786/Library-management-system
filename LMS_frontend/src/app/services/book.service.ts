@@ -26,4 +26,12 @@ export class BookService {
         return this.http.delete(this.apiUrl + '/book/deleteBookById/' + id);
     }
 
+    borrowBook(id: string, userId: string) {
+        return this.http.post<any>(`${this.apiUrl}/book/borrow/${id}`, { userId });
+    }
+
+    returnBookById(id: string, userId: string) {
+        return this.http.post<any>(`${this.apiUrl}/book/return/${id}`, { userId });
+    }
+
 }

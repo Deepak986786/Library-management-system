@@ -1,4 +1,5 @@
 import { Book } from "../models/book.model.js";
+import { User } from "../models/user.model.js";
 
 const getAllBooks = async (req, res) => {
   try {
@@ -58,4 +59,77 @@ const deleteBookById = async (req, res) => {
   }
 };
 
-export { addBook, getAllBooks, getBookById, updateBookById, deleteBookById };
+const borrowBookById = async (req, res) => {
+  const userId = req.body.userId;
+  const bookId = req.params.id;
+
+  try {
+    const user = await User.findById(userId);
+    const book = await Book.findById(bookId);
+
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+
+    if (book.stock < 1) {
+      return res.status(400).send({ message: "Book out of stock" });
+    }
+
+    user.borrowedBooks.push(bookId);
+    book.stock -= 1;
+
+    await user.save();
+    await book.save();
+
+    res.status(200).send({ message: "Book borrowed successfully", user });
+  } catch (error) {
+    res.status(500).send({ message: "Error borrowing book", error });
+  }
+};
+
+const returnBookById = async (req, res) => {
+  const userId = req.body.userId;
+  const bookId = req.params.id;
+
+  try {
+    const user = await User.findById(userId);
+    const book = await Book.findById(bookId);
+
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+
+    const bookIndex = user.borrowedBooks.indexOf(bookId);
+    if (bookIndex === -1) {
+      return res.status(400).send({ message: "Book not borrowed by the user" });
+    }
+
+    user.borrowedBooks.splice(bookIndex, 1);
+    book.stock += 1;
+
+    await user.save();
+    await book.save();
+
+    res.status(200).send({ message: "Book returned successfully", user });
+  } catch (error) {
+    res.status(500).send({ message: "Error returning book", error });
+  }
+};
+
+export {
+  addBook,
+  getAllBooks,
+  getBookById,
+  updateBookById,
+  deleteBookById,
+  borrowBookById,
+  returnBookById,
+};

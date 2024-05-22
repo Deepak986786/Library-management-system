@@ -21,7 +21,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveProfile() {
+    debugger
     this.authService.updateUser(this.user);
+    
     this.editMode = false;
   }
 

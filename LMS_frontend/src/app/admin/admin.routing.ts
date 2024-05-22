@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'users-list', component: UsersListComponent },
     { path: 'manage-books', component: ManageBooksComponent },
     { path: 'add-book', component: BookAddEditDialogComponent },
-    { path: 'edit-book/:id"', component: BookAddEditDialogComponent },
+    { path: 'edit-book/:id', component: BookAddEditDialogComponent },
     { path: 'profile' , component: AdminProfileComponent },
 ]
 @NgModule({

@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   }
 
   navItems = [
+    { title: 'Home', url: '/admin/dashboard' },
     { title: 'Users', url: '/admin/users-list' },
     { title: 'Manage Books', url: '/admin/manage-books' },
     { title: 'Profile', url: '/admin/profile' }

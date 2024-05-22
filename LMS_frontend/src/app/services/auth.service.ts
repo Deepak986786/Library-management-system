@@ -49,9 +49,16 @@ export class AuthService {
       })
     );
   }
-  
-  getAllUsers(){
+
+  getAllUsers() {
     return this.http.get<any>(`${this.apiUrl}/user/getAllUsers`)
+  }
+
+
+  getBorrowedBooks(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/borrowed/${userId}`).pipe(
+      tap((response: any) => { console.log('borrowed', response) })
+    );
   }
 
 

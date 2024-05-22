@@ -1,1 +1,19 @@
-<p>books-borrowed works!</p>
+<div class="borrowed-books-container">
+    <h2>Borrowed Books</h2>
+    <div *ngIf="borrowedBooks.length === 0">
+        <p>No books borrowed.</p>
+    </div>
+    <div *ngIf="borrowedBooks.length > 0" class="books-list">
+        <div class="book-card" *ngFor="let book of borrowedBooks">
+            <div class="thumbnail">
+                <img [src]="book.image" alt="{{ book.title }}">
+            </div>
+            <div class="details">
+                <h3 class="title">{{ book.title }}</h3>
+                <p class="author">by {{ book.author }}</p>
+                <p class="description">{{ book.description }}</p>
+                <button (click)="returnBook(book._id)">Return Book</button>
+            </div>
+        </div>
+    </div>
+</div>
